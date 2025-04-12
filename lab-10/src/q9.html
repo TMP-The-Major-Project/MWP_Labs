@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" ng-app="sortApp">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sortable Table</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body ng-controller="TableController">
+  <div>
+    <h1>Sortable Table by Name</h1>
+
+    <!-- Buttons to sort in ascending and descending order -->
+    <button ng-click="sortTable('asc')">Sort Ascending</button>
+    <button ng-click="sortTable('desc')">Sort Descending</button>
+
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Country</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="person in people">
+          <td>{{ person.name }}</td>
+          <td>{{ person.age }}</td>
+          <td>{{ person.country }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    angular
+      .module("sortApp", [])
+      .controller("TableController", function ($scope) {
+        // Sample data of people
+        $scope.people = [
+          {name: "John Doe", age: 30, country: "USA"},
+          {name: "Jane Smith", age: 25, country: "Canada"},
+          {name: "Sam Johnson", age: 35, country: "Australia"},
+          {name: "Anna Brown", age: 28, country: "UK"},
+        ];
+
+        // Function to sort the table based on Name
+        $scope.sortTable = function (order) {
+          if (order === "asc") {
+            $scope.people.sort((a, b) => a.name.localeCompare(b.name));
+          } else if (order === "desc") {
+            $scope.people.sort((a, b) => b.name.localeCompare(a.name));
+          }
+        };
+      });
+  </script>
+</body>
+
+</html>

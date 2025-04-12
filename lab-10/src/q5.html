@@ -1,0 +1,39 @@
+<!doctype html>
+<html ng-app="scopeApp">
+
+<head>
+  <title>$scope vs $rootScope Example</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body>
+  <div ng-controller="ParentController">
+    <h2>Parent Controller</h2>
+    <p><strong>$rootScope.greeting:</strong> {{ greeting }}</p>
+    <p><strong>$scope.message:</strong> {{ message }}</p>
+  </div>
+  <hr />
+  <div ng-controller="ChildController">
+    <h2>Child Controller</h2>
+    <p><strong>$rootScope.greeting:</strong> {{ greeting }}</p>
+    <p><strong>$scope.note:</strong> {{ note }}</p>
+    <p>
+      <strong>Trying to access $scope.message (from Parent):</strong> {{
+      message }}
+    </p>
+  </div>
+  <script>
+    var app = angular.module("scopeApp", []);
+    app.run(function ($rootScope) {
+      $rootScope.greeting = "Hello from $rootScope!";
+    });
+    app.controller("ParentController", function ($scope) {
+      $scope.message = "This is from ParentController's $scope.";
+    });
+    app.controller("ChildController", function ($scope) {
+      $scope.note = "This is from ChildController's $scope.";
+    });
+  </script>
+</body>
+
+</html>

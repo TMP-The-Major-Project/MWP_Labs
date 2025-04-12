@@ -1,0 +1,80 @@
+<!doctype html>
+<html ng-app="userApp">
+
+<head>
+  <title>AngularJS User Table</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <style>
+    table {
+      width: 80%;
+      margin: 30px auto;
+    }
+
+    th,
+    td {
+      padding: 12px 16px;
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body ng-controller="UserController">
+  <table>
+    <thead>
+      <tr>
+        <th>Online ID</th>
+        <th>E-mail Address</th>
+        <th>Country</th>
+        <th>Language</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="user in users | orderBy:'-country'">
+        <td>{{ user.id }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.country }}</td>
+        <td>{{ user.language }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    var app = angular.module("userApp", []);
+    app.controller("UserController", function ($scope) {
+      $scope.users = [
+        {
+          id: "User_A",
+          email: "User_A@company.com",
+          country: "United State",
+          language: "en-US",
+        },
+        {
+          id: "User_B",
+          email: "User_B@company.com",
+          country: "Mexico",
+          language: "es-MX",
+        },
+        {
+          id: "User_C",
+          email: "User_C@company.com",
+          country: "United Kingdom",
+          language: "en-GB",
+        },
+        {
+          id: "User_D",
+          email: "User_D@company.com",
+          country: "Japan",
+          language: "ja-JP",
+        },
+        {
+          id: "User_E",
+          email: "User_E@company.com",
+          country: "United State",
+          language: "en-US",
+        },
+      ];
+    });
+  </script>
+</body>
+
+</html>

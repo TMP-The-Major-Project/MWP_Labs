@@ -1,0 +1,40 @@
+<!doctype html>
+<html ng-app="marksApp">
+
+<head>
+  <title>Student Marks Input</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body ng-controller="MarksController">
+  <h2>Enter Marks for 6 Subjects</h2>
+  <label>Subject 1:</label>
+  <input type="number" ng-model="marks[0]" /><br /><br />
+  <label>Subject 2:</label>
+  <input type="number" ng-model="marks[1]" /><br /><br />
+  <label>Subject 3:</label>
+  <input type="number" ng-model="marks[2]" /><br /><br />
+  <label>Subject 4:</label>
+  <input type="number" ng-model="marks[3]" /><br /><br />
+  <label>Subject 5:</label>
+  <input type="number" ng-model="marks[4]" /><br /><br />
+  <label>Subject 6:</label>
+  <input type="number" ng-model="marks[5]" /><br /><br />
+  <h3>Marks Entered:</h3>
+  <ul>
+    <li>Subject 1: {{ marks[0] }}</li>
+    <li>Subject 2: {{ marks[1] }}</li>
+    <li>Subject 3: {{ marks[2] }}</li>
+    <li>Subject 4: {{ marks[3] }}</li>
+    <li>Subject 5: {{ marks[4] }}</li>
+    <li>Subject 6: {{ marks[5] }}</li>
+  </ul>
+  <script>
+    var app = angular.module("marksApp", []);
+    app.controller("MarksController", function ($scope) {
+      $scope.marks = [0, 0, 0, 0, 0, 0]; // initialize with zero
+    });
+  </script>
+</body>
+
+</html>

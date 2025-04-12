@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" ng-app="likesApp">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Like/Dislike Tracker</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body ng-controller="LikeDislikeController">
+  <div>
+    <h1>Like/Dislike Tracker</h1>
+
+    <div>
+      <h2>Likes: <span ng-bind="likes"></span></h2>
+      <button ng-click="incrementLikes()">Like</button>
+    </div>
+
+    <div>
+      <h2>Dislikes: <span ng-bind="dislikes"></span></h2>
+      <button ng-click="incrementDislikes()">Dislike</button>
+    </div>
+
+    <div>
+      <h3>Total Score: <span ng-bind="totalScore"></span></h3>
+    </div>
+  </div>
+
+  <script>
+    angular
+      .module("likesApp", [])
+      .controller("LikeDislikeController", function ($scope) {
+        // Initialize scores
+        $scope.likes = 0;
+        $scope.dislikes = 0;
+        $scope.totalScore = 0;
+
+        // Increment like score
+        $scope.incrementLikes = function () {
+          $scope.likes++;
+          $scope.calculateTotalScore();
+        };
+
+        // Increment dislike score
+        $scope.incrementDislikes = function () {
+          $scope.dislikes++;
+          $scope.calculateTotalScore();
+        };
+
+        // Calculate total score (likes - dislikes)
+        $scope.calculateTotalScore = function () {
+          $scope.totalScore = $scope.likes - $scope.dislikes;
+        };
+      });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en" ng-app="formApp">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login & Registration Form Validation</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body ng-controller="FormController">
+  <div>
+    <h1>Login & Registration Form</h1>
+
+    <form name="registrationForm" ng-submit="submitForm()" novalidate>
+      <label>Name:</label>
+      <input type="text" name="name" ng-model="formData.name" ng-required="true" ng-pattern="/^[a-zA-Z]+$/" />
+      <span ng-show="registrationForm.name.$touched && registrationForm.name.$invalid">Name is required and must only
+        contain alphabets.</span>
+      <br />
+      <label>Age:</label>
+      <input type="number" name="age" ng-model="formData.age" ng-required="true" ng-pattern="/^[0-9]+$/" />
+      <span ng-show="registrationForm.age.$touched && registrationForm.age.$invalid">Age is required and must be a
+        number.</span>
+      <br />
+      <label>Phone Number:</label>
+      <input type="text" name="phone" ng-model="formData.phone" ng-required="true" ng-pattern="/^[0-9]{10}$/" />
+      <span ng-show="registrationForm.phone.$touched && registrationForm.phone.$invalid">Phone number must be 10 digits
+        long.</span>
+      <br />
+      <label>Zipcode:</label>
+      <input type="text" name="zipcode" ng-model="formData.zipcode" ng-required="true" ng-pattern="/^[0-9]+$/" />
+      <span ng-show="registrationForm.zipcode.$touched && registrationForm.zipcode.$invalid">Zipcode is required and
+        must be a number.</span>
+      <br />
+      <label>Username:</label>
+      <input type="text" name="username" ng-model="formData.username" ng-required="true"
+        ng-pattern="/^[A-Z][a-zA-Z]*$/" />
+      <span ng-show="registrationForm.username.$touched && registrationForm.username.$invalid">Username must start with
+        a capital letter and contain only
+        alphabets.</span>
+      <br />
+      <label>Password:</label>
+      <input type="password" name="password" ng-model="formData.password" ng-required="true" ng-minlength="5"
+        ng-maxlength="15" ng-pattern="/^[a-zA-Z0-9]*$/" />
+      <span ng-show="registrationForm.password.$touched && registrationForm.password.$invalid">Password must be between
+        5-15 characters long and alphanumeric.</span>
+      <br />
+      <label>Email:</label>
+      <input type="email" name="email" ng-model="formData.email" ng-required="true" />
+      <span ng-show="registrationForm.email.$touched && registrationForm.email.$invalid">Please enter a valid email
+        address.</span>
+      <br />
+      <label>
+        <input type="checkbox" ng-model="formData.checkbox" ng-required="true" />
+        I agree to the terms and conditions
+      </label>
+      <span ng-show="registrationForm.checkbox.$touched && registrationForm.checkbox.$invalid">You must agree to the
+        terms and conditions.</span>
+      <br />
+      <label>Gender:</label>
+      <input type="radio" name="gender" ng-model="formData.gender" value="male" ng-required="true" />
+      Male
+      <input type="radio" name="gender" ng-model="formData.gender" value="female" ng-required="true" />
+      Female
+      <span ng-show="registrationForm.gender.$touched && registrationForm.gender.$invalid">You must select a
+        gender.</span>
+      <br />
+      <label>Country:</label>
+      <select name="country" ng-model="formData.country" ng-required="true">
+        <option value="">Select a country</option>
+        <option value="USA">USA</option>
+        <option value="Canada">Canada</option>
+        <option value="UK">UK</option>
+      </select>
+      <span ng-show="registrationForm.country.$touched && registrationForm.country.$invalid">You must select a
+        country.</span>
+      <br />
+      <button type="submit" ng-disabled="registrationForm.$invalid">
+        Submit
+      </button>
+    </form>
+  </div>
+
+  <script>
+    angular
+      .module("formApp", [])
+      .controller("FormController", function ($scope) {
+        $scope.formData = {};
+        $scope.submitForm = function () {
+          if ($scope.registrationForm.$valid) {
+            alert("Form submitted successfully!");
+          } else {
+            alert("Please fix the errors in the form.");
+          }
+        };
+      });
+  </script>
+</body>
+
+</html>

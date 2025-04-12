@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en" ng-app="shoppingCartApp">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shopping Cart</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body ng-controller="CartController">
+  <div>
+    <h1>Shopping Cart</h1>
+    <div>
+      <h2>Products</h2>
+      <div ng-repeat="product in products">
+        <div>
+          <h3>{{ product.name }}</h3>
+          <p>Price: ${{ product.price }}</p>
+          <button ng-click="addToCart(product)" ng-disabled="product.inCart">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h2>Your Cart</h2>
+      <div ng-show="cart.length > 0">
+        <ul>
+          <li ng-repeat="item in cart">
+            {{ item.name }} - ${{ item.price }}
+            <button ng-click="removeFromCart(item)">Remove</button>
+          </li>
+        </ul>
+        <p>Total: ${{ totalPrice }}</p>
+      </div>
+      <div ng-hide="cart.length > 0">
+        <p>Your cart is empty</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    angular
+      .module("shoppingCartApp", [])
+      .controller("CartController", function ($scope) {
+        // List of available products
+        $scope.products = [
+          {name: "Product 1", price: 10, inCart: false},
+          {name: "Product 2", price: 15, inCart: false},
+          {name: "Product 3", price: 20, inCart: false},
+        ];
+
+        // The cart itself
+        $scope.cart = [];
+
+        // Function to add product to the cart
+        $scope.addToCart = function (product) {
+          product.inCart = true;
+          $scope.cart.push(product);
+          $scope.calculateTotal();
+        };
+
+        // Function to remove product from the cart
+        $scope.removeFromCart = function (item) {
+          item.inCart = false;
+          var index = $scope.cart.indexOf(item);
+          if (index > -1) {
+            $scope.cart.splice(index, 1);
+          }
+          $scope.calculateTotal();
+        };
+
+        // Function to calculate the total price
+        $scope.calculateTotal = function () {
+          var total = 0;
+          angular.forEach($scope.cart, function (item) {
+            total += item.price;
+          });
+          $scope.totalPrice = total;
+        };
+      });
+  </script>
+</body>
+
+</html>
