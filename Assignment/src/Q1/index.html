@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Framed Webpage</title>
+</head>
+<frameset rows="15%,*,10%">
+  <frame src="top.html" name="topFrame" noresize scrolling="no">
+
+    <frameset cols="20%,*,20%">
+      <frame src="menu.html" name="menuFrame">
+        <frame src="content.html" name="contentFrame">
+          <frame src="images.html" name="imageFrame">
+    </frameset>
+
+    <frame src="bottom.html" name="bottomFrame" noresize scrolling="no">
+</frameset>
+
+</html>
