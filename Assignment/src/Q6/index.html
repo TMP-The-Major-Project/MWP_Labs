@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Seminar Registration</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .highlight {
+        background-color: yellow;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+
+  <body>
+    <input type="text" id="field1" placeholder="Field1" />
+    <p id="myPara">Double click me to change background color</p>
+    <p id="fadePara">Click me to fade</p>
+
+    <script>
+      $(document).ready(function () {
+        $("#field1").blur(function () {
+          alert("Field1 lost focus!");
+        });
+
+        $("#myPara").dblclick(function () {
+          $(this).toggleClass("highlight");
+        });
+
+        $("#fadePara").click(function () {
+          $(this).fadeTo(500, 0.5);
+        });
+      });
+    </script>
+  </body>
+</html>

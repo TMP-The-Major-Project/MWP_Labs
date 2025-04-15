@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Chef Exam Result</title>
+</head>
+
+<body>
+  <h2>Chef Exam Result Checker</h2>
+  <div id="output"></div>
+  <script>
+    let outputDiv = document.getElementById("output");
+    let T = parseInt(prompt("Enter the number of test cases (T):"));
+    let inputs = [];
+    let results = [];
+    for (let i = 0; i < T; i++) {
+      let input = prompt(`Enter values for test case ${i + 1} (N X P):`);
+      let [N, X, P] = input.trim().split(" ").map(Number);
+      inputs.push(`Test case ${i + 1}: N=${N}, X=${X}, P=${P}`);
+      let score = X * 3 - (N - X) * 1;
+      if (score >= P) {
+        results.push("PASS");
+      } else {
+        results.push("FAIL");
+      }
+    }
+
+    // Display inputs and outputs
+    outputDiv.innerHTML = `
+      <h4>Inputs:</h4>
+      <pre>${inputs.join("\n")}</pre>
+      <h4>Results:</h4>
+      <pre>${results.join("\n")}</pre>
+    `;
+  </script>
+</body>
+
+</html>

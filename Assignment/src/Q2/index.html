@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Seminar Registration</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h2>International Seminar Registration</h2>
+
+  <form>
+    <label>Name:</label><br />
+    <input type="text" name="name" required /><br /><br />
+
+    <label>Email:</label><br />
+    <input type="email" name="email" /><br /><br />
+
+    <label>Country:</label><br />
+    <select name="country">
+      <option>India</option>
+      <option>USA</option>
+      <option>UK</option>
+      <option>Germany</option>
+    </select><br /><br />
+
+    <label>Category:</label><br />
+    <select name="category">
+      <option>Student</option>
+      <option>Faculty Member</option>
+      <option>Professional</option>
+      <option>Company/Firm Representative</option>
+    </select><br /><br />
+
+    <label>Amount:</label><br />
+    <input type="number" name="amount" placeholder="Amount" /><br /><br />
+
+    <label>Currency:</label><br />
+    <input type="radio" name="currency" value="INR" checked /> INR
+    <input type="radio" name="currency" value="USD" /> USD<br /><br />
+
+    <label>Payment Mode:</label><br />
+    <select name="payment">
+      <option>Credit Card</option>
+      <option>Debit Card</option>
+      <option>Demand Draft</option>
+    </select><br /><br />
+
+    <label>Hotel Preference:</label><br />
+    <select name="hotel">
+      <option>Hotel Sunrise</option>
+      <option>Hotel Blue Moon</option>
+      <option>Hotel Paradise</option>
+      <option>Hotel Green Leaf</option>
+    </select><br /><br />
+
+    <input type="submit" value="Register" />
+  </form>
+</body>
+
+</html>
