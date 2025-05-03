@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title></title>
+  <script src="jquery-3.7.1.js"></script>
+</head>
+
+<body>
+  <p>This is ny body</p>
+  <p id="sec">This is ny body</p>
+  <p>This is ny body</p>
+  <p>This is ny body</p>
+</body>
+
+<script>
+  $(document).ready(function () {
+    // $("selector").action();
+    $("p").click(function () {
+      console.log("you clicked on p");
+      // $("p").hide();
+      $(this).hide();
+    });
+
+    $("#sec").click(function () {
+      console.log("2nd p");
+    });
+  });
+</script>
+
+</html>
